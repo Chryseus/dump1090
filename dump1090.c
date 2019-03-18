@@ -508,7 +508,7 @@ int modesInitSDRplay(void) {
 
     err |= mir_sdr_StreamInit(&Modes.gr, 8.000, 1090.000, bwType,
           ifType, LNA_STATE_FOR_MAX_GAIN, &Modes.systemGain, mir_sdr_USE_RSP_SET_GR,
-          &Modes.sdrplaySamplesPerPacket, sdrplayCallback, sdrplayGainCallback, NULL);
+          &Modes.sdrplaySamplesPerPacket, (void*) sdrplayCallback, sdrplayGainCallback, NULL);
     if (err) {
         fprintf(stderr, "Unable to initialize RSP\n");
         return (1);
